@@ -1,0 +1,12 @@
+AGENTS.md
+INSTALL.md
+MANIFEST.txt
+backend/AGENTS.md
+docs/agent/00-source-of-truth.md
+docs/agent/01-architecture-and-boundaries.md
+docs/agent/02-execution-workflow.md
+docs/agent/03-security-guardrails.md
+docs/agent/04-testing-and-definition-of-done.md
+docs/agent/05-change-playbooks.md
+docs/agent/README.md
+frontend/AGENTS.md
