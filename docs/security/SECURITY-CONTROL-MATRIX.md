@@ -2,6 +2,24 @@
 
 Status reflects repository evidence and safe local checks, not a production certification.
 
+## Remediation validation addendum — 2026-09-22
+
+| Security Control | FE | BE | Deployment | Status | Evidence |
+|---|---|---|---|---|---|
+| Input validation | PASS | PASS | NOT VERIFIABLE | PARTIAL | Appointment route/backend validation and bounded fields; deployment limits not verified. |
+| XSS / JSON-LD protection | PASS | PASS | NOT VERIFIABLE | PASS | Central safe JSON-LD serializer and React escaping. |
+| URL safety | PASS | N/A | N/A | PASS | Central `safeHref()` and regression tests. |
+| Appointment rate limiting | PARTIAL | PARTIAL | NOT VERIFIABLE | PARTIAL | Source/fingerprint/global pre-downstream checks; no durable distributed store or edge proof. |
+| Secret handling | PARTIAL | PARTIAL | NOT VERIFIABLE | PARTIAL | Server-only GraphQL/appointment integrations; deployment secret scan/runtime verification pending. |
+| REST security | PASS | PASS | NOT VERIFIABLE | PARTIAL | Public reads and protected appointment write path tested locally; staging coverage pending. |
+| GraphQL security | PASS | NOT VERIFIABLE | NOT VERIFIABLE | NOT VERIFIABLE | Client hardened; local GraphQL runtime unavailable. |
+| Security headers | PASS | N/A | NOT VERIFIABLE | PARTIAL | Next config emits baseline headers; edge delivery unverified. |
+| Logging/redaction | PASS | PASS | NOT VERIFIABLE | PARTIAL | Appointment security events omit PII; operational log retention not verified. |
+| Dependency security | PASS | PASS | NOT VERIFIABLE | PARTIAL | `npm audit` clean and PHP syntax clean; production inventory pending. |
+| CI/CD security | PARTIAL | PARTIAL | NOT VERIFIABLE | PARTIAL | New workflow exists; CI execution, action pinning, and deployment isolation pending. |
+
+Controls not listed above retain their historical status until independently verified.
+
 | Security Control | FE | BE | Deployment | Status | Evidence |
 |---|---|---|---|---|---|
 | Input validation | Partial | Pass | Not verified | PARTIAL | Appointment schema/allow-lists exist; no centralized schema library; public abuse remains |
@@ -31,4 +49,3 @@ Status reflects repository evidence and safe local checks, not a production cert
 | Error handling | Pass | Pass | Not verified | PASS | Generic appointment errors; REST errors do not expose stack traces in reviewed code |
 | Backup/rollback | N/A | N/A | Not verified | NOT VERIFIABLE | Operational control |
 | Monitoring/alerting | N/A | N/A | Not verified | NOT VERIFIABLE | Operational control |
-

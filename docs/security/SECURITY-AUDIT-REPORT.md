@@ -1,5 +1,22 @@
 # Security Audit Report
 
+## Remediation validation addendum — 2026-09-22
+
+The original findings were revalidated against the current working tree. No CSS, layout, typography, animation, or responsive presentation changes were made.
+
+| Finding | Current status | Evidence / residual risk |
+|---|---|---|
+| SEC-001 | PARTIALLY REMEDIATED / REQUIRES INFRASTRUCTURE | Appointment requests enforce JSON, size, origin, source/fingerprint limits before WordPress work, duplicate rejection, `Retry-After`, no-store responses, and PII-free events. A durable distributed limiter and edge bot control remain unavailable; production must not use the in-memory fallback. |
+| SEC-002 | REMEDIATED | Central `safeHref()` rejects protocol-relative, backslash-confused, encoded dangerous schemes, controls, and non-HTTPS external URLs. |
+| SEC-003 | PARTIALLY REMEDIATED | Environment-aware canonical/robots behavior and explicit GraphQL URL validation were added. Production requires explicit validated values. |
+| SEC-004 | PARTIALLY REMEDIATED / REQUIRES EDGE VERIFICATION | Application headers are configured. CSP is a compatible baseline and retains inline allowances required by the current app; actual edge delivery remains unverified. |
+| SEC-005 | PARTIALLY REMEDIATED / REQUIRES PRIVACY APPROVAL | Appointment posts are admin-only, logs exclude form PII, and notification email omits free-text message. Retention, deletion, backup retention, and recipient ownership remain governance decisions. |
+| SEC-006 | REMEDIATED | JSON-LD escapes script-breaking characters through one shared serializer. |
+
+GraphQL client hardening is implemented with server-only enforcement, fixed query usage, timeout, response-size bound, and generic failures. GraphQL runtime policy is **NOT VERIFIABLE** locally because the local endpoint returned 404.
+
+Validation: TypeScript passed; targeted remediation ESLint passed; security regression tests passed (3/3); PHP syntax passed for all project plugin files; `npm audit --json` reported zero vulnerabilities; `git diff --check` passed. Full lint reports pre-existing unrelated errors. Production build is blocked only by unavailable Google Fonts network access. A security CI workflow was added, but its execution and production infrastructure controls require CI/staging verification.
+
 ## 1. Executive Summary
 
 Assessment result: **BLOCKED — high-risk production security defects remain**.
@@ -289,4 +306,3 @@ Even after code remediation, public forms remain abuse targets and need operatio
 ## 26. Final Production Security Gate
 
 **BLOCKED — high-risk production security defects remain** until SEC-001 is remediated and the listed production controls are verified.
-

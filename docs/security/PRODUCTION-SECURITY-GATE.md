@@ -30,3 +30,15 @@
 
 Local success does not prove WP Engine configuration, CDN headers, WAF/rate limiting, GraphQL policy, mail security, admin MFA, backups, or privacy compliance.
 
+## Remediation decision — 2026-09-22
+
+**CONDITIONAL — code-level remediation is substantially complete, but required production controls remain unverified.**
+
+- SEC-001: **PARTIALLY REMEDIATED / REQUIRES INFRASTRUCTURE**. The application fails closed in production unless durable or edge rate limiting is configured. Do not enable the process-local memory limiter for multi-instance production.
+- SEC-002: **REMEDIATED** and regression-tested.
+- SEC-003: **PARTIALLY REMEDIATED**; explicit production environment configuration is required.
+- SEC-004: **PARTIALLY REMEDIATED**; verify headers at the actual edge.
+- SEC-005: **PARTIALLY REMEDIATED**; privacy/data-owner approval remains required.
+- SEC-006: **REMEDIATED** and regression-tested.
+
+Do not issue production security sign-off until durable appointment limiting or equivalent WAF/edge control, bot mitigation, GraphQL runtime policy, WordPress hardening/MFA/WAF/backups, delivered headers, explicit production environment values, deployment artifact scanning, and privacy retention/deletion approval are verified. The local build also needs network access to fetch the existing Google Font dependency; the font implementation was not changed.

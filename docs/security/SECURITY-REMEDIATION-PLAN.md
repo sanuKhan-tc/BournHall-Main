@@ -57,3 +57,11 @@
 - Add REST contract tests for drafts/private/revisions and all invalid slug/type cases.
 - Document WordPress admin MFA, file editor, XML-RPC, backup/restore, WAF, patch cadence, and incident ownership.
 
+## Remediation validation addendum — 2026-09-22
+
+- SEC-001 code controls are implemented, but production distributed enforcement remains **REQUIRES INFRASTRUCTURE**. Configure a durable shared limiter or verified edge/WAF equivalent before production; keep `APPOINTMENT_RATE_LIMIT_MODE` unset in production so the route fails closed rather than using process-local state.
+- SEC-002 and SEC-006 are remediated and covered by `frontend/tests/security-regression.test.ts`.
+- SEC-003 and SEC-004 are application-remediated but require deployment verification of explicit production environment values and delivered headers.
+- SEC-005 technical minimization is implemented; retention/deletion/access policy is **REQUIRES PRIVACY/DATA OWNER APPROVAL**.
+- GraphQL runtime, WordPress hardening, WAF, MFA, backups/restore, and edge security remain **NOT VERIFIABLE** from this local repository/runtime.
+- `.github/workflows/security.yml` adds FE/BE checks and deployment-artifact guards. Pin third-party action SHAs as a supply-chain hardening follow-up.

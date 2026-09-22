@@ -1,5 +1,13 @@
 # Penetration Test Checklist
 
+## Remediation regression evidence — 2026-09-22
+
+Automated local coverage added in `frontend/tests/security-regression.test.ts`: dangerous/protocol-relative URL rejection, script-safe JSON-LD serialization, and source/fingerprint-scoped appointment rate limiting. Result: **3/3 passed**.
+
+Appointment route code now rejects wrong content type, malformed/oversized requests, missing or foreign origins, unexpected fields, invalid fields, honeypot/too-fast submissions, duplicates, and rate-limit violations before downstream WordPress work. Full HTTP matrix and concurrent duplicate testing still require a running test server and mocked downstream; no real email was sent.
+
+Remaining runtime checks: durable distributed limiting, staging headers, GraphQL policy, WordPress hardening, WAF/bot control, and production cache behavior.
+
 ## Scope and safety
 
 - Target: local/development Bourn Hall environment only.
@@ -60,4 +68,3 @@
 - Public `/wp-json/wp/v2` exposure and CPT visibility in production.
 - WPGraphQL anonymous introspection, mutation denial, complexity/pagination limits, and private field access.
 - XML-RPC policy, debug/display-errors behavior, admin MFA, file editor, uploads, WAF, and backup access.
-
