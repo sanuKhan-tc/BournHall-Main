@@ -1,0 +1,65 @@
+name: Deploy backend to WP Engine (dev)
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - "backend"
+      - "backend/**"
+      - ".github/workflows/deploy-backend-dev.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-backend-dev
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+
+      - name: PHP syntax checks
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          find backend/wp-content/plugins/brounhall-headless \
+            -type f \
+            -name '*.php' \
+            -print0 |
+            xargs -0 -n1 php -l
+
+      - name: Deploy custom plugin only
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ vars.WPE_DEV_ENV }}
+
+          SRC_PATH: "backend/wp-content/plugins/brounhall-headless/"
+          REMOTE_PATH: "wp-content/plugins/brounhall-headless/"
+
+          PHP_LINT: TRUE
+          CACHE_CLEAR: TRUE
+
+          FLAGS: >-
+            -azvr
+            --inplace
+            --delete
+            --exclude=.*
+            --exclude=node_modules/
