@@ -1,11 +1,12 @@
 # Deployment
 
-## Backend development environment
+## Backend repository deployment
 
-The `dev` branch deploys only:
+The backend repository owns `.github/workflows/deploy-dev.yml`. Its `dev` branch
+deploys only:
 
 ```text
-backend/wp-content/plugins/brounhall-headless/
+wp-content/plugins/brounhall-headless/
 ```
 
 WordPress core, `wp-config.php`, uploads, and the database are not deployed by
@@ -16,8 +17,8 @@ Configure a GitHub Environment named `dev` with:
 - Secret: `WPE_SSHG_KEY_PRIVATE`
 - Variable: `WPE_DEV_ENV` — the WP Engine environment name
 
-The workflow starts on a push or merge into `dev`, or manually from the
-Actions tab.
+The workflow starts on a push or merge into the backend repository's `dev`
+branch, or manually from the Actions tab.
 
 ## WP Engine backend setup
 
@@ -45,5 +46,4 @@ Configure the frontend's server-side WordPress URL and other secrets in the
 WP Engine environment settings. Set the WordPress Headless Plugin's frontend
 URL to the corresponding WP Engine frontend development URL.
 
-The frontend is intentionally not deployed by the parent repository's backend
-workflow.
+The frontend is intentionally not deployed by this backend workflow.
