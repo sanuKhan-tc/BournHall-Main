@@ -55,9 +55,16 @@ The local Next.js runtime was verified at `http://localhost:3000`. The supplied 
 
 - No new browser-to-WordPress request was introduced.
 - No secrets or patient PII were added or logged; appointment validation used synthetic QA data only.
-- No backend code was changed.
-- Frontend child changes are isolated to a new branch. Parent pointer update is blocked by pre-existing parent/submodule state: the parent has no `.gitmodules` mapping, and its tracked frontend/backend gitlinks already differ from the checked-out child SHAs. Unknown existing child commits must not be overwritten or silently repinned.
+- No backend code was changed; backend remains on the published `dev` SHA `07ed4621dc1cad588426cf47a41ba62f78949804`.
+- Frontend child changes are published on `origin/fix/qa-defect-remediation` at `10d8bc5c248bbe20da9f9594b3d239b0d530eed2`.
+- The parent pins those tested child SHAs below. The pre-existing untracked parent `.gitignore` is intentionally not part of this change.
 
 ## Remaining manual QA
 
 Safari/WebKit scroll, Android horizontal-to-vertical gesture recovery, video playback, visual responsive defects, keyboard menu focus, and the consultation browser flow should be rerun with browser automation/manual devices before release.
+
+## Tested pointers
+
+- Frontend: `10d8bc5c248bbe20da9f9594b3d239b0d530eed2`
+- Backend: `07ed4621dc1cad588426cf47a41ba62f78949804`
+- Parent: updated after child validation; live WordPress/browser evidence remains environment-blocked in the current sandbox.
