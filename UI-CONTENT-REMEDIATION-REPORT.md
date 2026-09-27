@@ -96,9 +96,9 @@ The hosted CMS payload, approved design/reference files, and several approved me
 
 Recorded after commit:
 
-- frontend SHA: pending
-- backend SHA: unchanged
-- parent SHA: pending
+- frontend SHA: `ca952960e8d4dfad924663ff31f4889e6579bcd4`
+- backend SHA: `07ed4621dc1cad588426cf47a41ba62f78949804` (unchanged)
+- parent integration SHA: `c305dd0`
 
 ## Final verdict
 
