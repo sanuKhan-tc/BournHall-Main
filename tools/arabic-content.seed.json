@@ -1,0 +1,106 @@
+{
+  "pages": [
+    {
+      "slug": "home",
+      "status": "publish",
+      "title": "الرئيسية",
+      "data": {
+        "sections": [
+          { "id": "hero", "type": "hero", "content": { "title": "رحلتك نحو الإنجاب تبدأ هنا", "description": "رعاية متخصصة وإنسانية من أطباء مدربين دولياً، مع علاجات متقدمة وخطة مصممة خصيصاً لك." }, "actions": [ { "label": "احجز موعداً", "href": "/book-appointment" }, { "label": "استكشف العلاجات", "href": "/treatments" } ] },
+          { "id": "support-journey", "type": "support_grid", "content": { "title": "كيف يمكننا دعم رحلتك؟" }, "items": [ { "key": "ivf", "title": "علاج أطفال الأنابيب", "href": "/treatments/ivf" }, { "key": "fertility-testing", "title": "فحوصات الخصوبة", "href": "/fertility-testing" }, { "key": "female-fertility", "title": "خصوبة المرأة", "href": "/treatments/female-fertility" }, { "key": "male-fertility", "title": "خصوبة الرجل", "href": "/treatments/male-fertility" } ] },
+          { "id": "metrics", "type": "metrics" },
+          { "id": "fertility-health", "type": "text_image", "content": { "title": "افهم صحة خصوبتك", "description": "يساعدك أخصائيو الخصوبة لدينا على فهم صحتك وخيارات العلاج المتاحة.", "label": "اقرأ المزيد", "href": "/fertility-health" } },
+          { "id": "treatments", "type": "entity_grid", "content": { "title": "علاجات الخصوبة في بورن هول", "description": "استكشف علاجات خصوبة مخصصة بدعم من أطباء متخصصين ورعاية إنجابية متقدمة." } },
+          { "id": "why-choose", "type": "feature_panel", "content": { "title": "لماذا تختار بورن هول؟", "description": "نجمع بين الخبرة الطبية والرعاية الإنسانية لمساعدتك في كل خطوة." }, "items": [ { "key": "expertise", "title": "أخصائيون ذوو خبرة", "text": "رعاية شخصية من خبراء خصوبة ملتزمين برحلتك." }, { "key": "care", "title": "رعاية خصوبة متقدمة", "text": "علاجات قائمة على الأدلة ومختبرات متطورة." }, { "key": "plans", "title": "خطط علاج مخصصة", "text": "كل مسار مصمم وفق تشخيصك وأهدافك." } ] },
+          { "id": "specialists", "type": "directory", "content": { "title": "تعرّف على أطبائنا" } },
+          { "id": "insights", "type": "insights", "content": { "title": "رؤى وموارد الخصوبة" } },
+          { "id": "faq", "type": "faq", "content": { "title": "الأسئلة الشائعة" } },
+          { "id": "clinics", "type": "locations", "content": { "title": "اعثر على عيادة بورن هول قريبة منك" } },
+          { "id": "final-cta", "type": "cta", "content": { "title": "خطوتك التالية" } }
+        ],
+        "version": 1
+      }
+    }
+  ],
+  "treatments": [
+    {
+      "slug": "ivf", "status": "publish", "title": "أطفال الأنابيب",
+      "data": {
+        "template": "treatment-detail",
+        "hero": { "title": "أطفال الأنابيب", "titleHighlight": "إذا كان أطفال الأنابيب جزءاً من رحلتك، فأنت في أيدٍ خبيرة في بورن هول", "media": { "alt": "أطفال الأنابيب" } },
+        "navigation": [ { "key": "what-is-ivf", "label": "ما هو أطفال الأنابيب؟", "target": "what-is-ivf" }, { "key": "how-does-it-work", "label": "كيف يعمل؟", "target": "how-does-it-work" }, { "key": "stimulation-protocols", "label": "بروتوكولات التحفيز", "target": "stimulation-protocols" }, { "key": "who-is-ivf-for", "label": "لمن يناسب أطفال الأنابيب؟", "target": "who-is-ivf-for" } ],
+        "sections": [
+          { "id": "what-is-ivf", "type": "rich_text", "enabled": true, "title": "ما هو أطفال الأنابيب؟", "paragraphs": [ "أطفال الأنابيب من أكثر علاجات الإنجاب المساعد اعتماداً وفعالية. في بورن هول تُصمم كل دورة وفق تشخيصك، وبإشراف أخصائيين مدربين دولياً ومختبر معتمد من JCI." ] },
+          { "id": "how-does-it-work", "type": "rich_text", "enabled": true, "title": "كيف يعمل؟", "paragraphs": [ "تتضمن الخطة عادة تحفيز المبايض، جمع البويضات، الإخصاب في المختبر، متابعة نمو الأجنة ثم نقل الجنين المناسب وفق الخطة الطبية." ] },
+          { "id": "stimulation-protocols", "type": "rich_text", "enabled": true, "title": "بروتوكولات التحفيز", "paragraphs": [ "يختار الطبيب بروتوكول التحفيز بناءً على العمر واحتياطي المبيض والتاريخ الطبي ونتائج الفحوصات، مع متابعة الاستجابة بالموجات فوق الصوتية." ] },
+          { "id": "who-is-ivf-for", "type": "rich_text", "enabled": true, "title": "لمن يناسب أطفال الأنابيب؟", "paragraphs": [ "تُحدد ملاءمة أطفال الأنابيب بعد تقييم فردي للزوجين، مع شرح الخيارات والنتائج المتوقعة والمخاطر قبل بدء العلاج." ] }
+        ]
+      }
+    },
+    {
+      "slug": "icsi", "status": "publish", "title": "الحقن المجهري",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "الحقن المجهري", "titleHighlight": "تقنية تساعد على جعل الإخصاب أكثر فعالية", "media": { "alt": "الحقن المجهري" } },
+        "navigation": [ { "key": "what-is-icsi", "label": "ما هو الحقن المجهري؟", "target": "what-is-icsi" }, { "key": "how-does-it-work", "label": "كيف يعمل؟", "target": "how-does-it-work" }, { "key": "who-is-icsi-for", "label": "لمن يناسب الحقن المجهري؟", "target": "who-is-icsi-for" } ],
+        "sections": [ { "id": "what-is-icsi", "type": "rich_text", "enabled": true, "title": "ما هو الحقن المجهري؟", "paragraphs": [ "يضع الحقن المجهري حيواناً منوياً واحداً داخل البويضة مباشرة. وقد يُنصح به عند انخفاض العدد أو فشل الإخصاب سابقاً أو عند استخدام حيوانات منوية مجمدة أو مستخرجة جراحياً." ] }, { "id": "how-does-it-work", "type": "rich_text", "enabled": true, "title": "كيف يعمل؟", "paragraphs": [ "يختار فريق المختبر حيواناً منوياً مناسباً ويحقنه داخل البويضة، ثم تُتابع الأجنة في المختبر قبل اتخاذ قرار النقل وفق الخطة العلاجية." ] }, { "id": "who-is-icsi-for", "type": "rich_text", "enabled": true, "title": "لمن يناسب الحقن المجهري؟", "paragraphs": [ "يُقيّم الحقن المجهري ضمن خطة فردية للحالات التي قد تحتاج إلى دعم إضافي للإخصاب، مع رعاية متكاملة لخصوبة الرجل." ] } ]
+      }
+    },
+    {
+      "slug": "iui", "status": "publish", "title": "التلقيح داخل الرحم",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "التلقيح داخل الرحم", "titleHighlight": "قد يزيد التلقيح داخل الرحم فرص حدوث الحمل", "media": { "alt": "التلقيح داخل الرحم" } },
+        "navigation": [ { "key": "what-is-iui", "label": "ما هو التلقيح داخل الرحم؟", "target": "what-is-iui" }, { "key": "how-does-it-work", "label": "كيف يعمل؟", "target": "how-does-it-work" }, { "key": "who-is-iui-for", "label": "لمن يناسب التلقيح داخل الرحم؟", "target": "who-is-iui-for" } ],
+        "sections": [ { "id": "what-is-iui", "type": "rich_text", "enabled": true, "title": "ما هو التلقيح داخل الرحم؟", "paragraphs": [ "التلقيح داخل الرحم علاج أقل تدخلاً يمكن أن يناسب كثيراً من المرضى، إذ تُوضع الحيوانات المنوية داخل الرحم في الوقت المناسب من الدورة." ] }, { "id": "how-does-it-work", "type": "rich_text", "enabled": true, "title": "كيف يعمل؟", "paragraphs": [ "يُحدد توقيت العلاج حول الإباضة الطبيعية أو المحفزة، مع متابعة التبويض وتقديم الإرشاد الطبي في كل مرحلة." ] }, { "id": "who-is-iui-for", "type": "rich_text", "enabled": true, "title": "لمن يناسب التلقيح داخل الرحم؟", "paragraphs": [ "قد يكون مناسباً لبعض حالات العقم غير المفسر أو عوامل الخصوبة الذكرية البسيطة أو اضطرابات التبويض بعد تقييم الحالة." ] } ]
+      }
+    },
+    {
+      "slug": "genetic-testing", "status": "publish", "title": "الفحص الجيني",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "الفحص الجيني", "titleHighlight": "الفحص الجيني قبل انغراس الأجنة (PGT)", "media": { "alt": "الفحص الجيني" } },
+        "navigation": [ { "key": "what-pgt-do-we-offer", "label": "ما أنواع الفحص الجيني قبل انغراس الأجنة التي نقدمها؟", "target": "what-pgt-do-we-offer" }, { "key": "pgt-m", "label": "PGT-M", "target": "pgt-m" }, { "key": "pgt-a", "label": "PGT-A", "target": "pgt-a" }, { "key": "pgt-sr", "label": "PGT-SR", "target": "pgt-sr" } ],
+        "sections": [ { "id": "what-pgt-do-we-offer", "type": "genetic_testing", "enabled": true, "title": "ما أنواع الفحص الجيني قبل انغراس الأجنة التي تقدمها بورن هول؟", "introduction": "تقدم بورن هول الفحص الجيني قبل انغراس الأجنة من أجل:", "items": [ { "key": "pgt-m", "text": "الأمراض أحادية الجين (PGT-M)" }, { "key": "pgt-sr", "text": "إعادة ترتيب الكروموسومات البنيوية (PGT-SR)" }, { "key": "pgt-a", "text": "فحص اختلال الصيغة الصبغية (PGT-A)" } ] } ]
+      }
+    },
+    {
+      "slug": "egg-freezing", "status": "publish", "title": "تجميد البويضات",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "تجميد البويضات", "titleHighlight": "احفظي خصوبتك للمستقبل", "description": "يمنحك تجميد البويضات خيار حفظ بويضاتك اليوم لاستخدامها المحتمل مستقبلاً، مع إرشاد شخصي من أخصائيي الخصوبة في بورن هول.", "media": { "alt": "تجميد البويضات" } },
+        "navigation": [ { "key": "what-is-egg-freezing", "label": "ما هو تجميد البويضات؟", "target": "what-is-egg-freezing" }, { "key": "why-freeze", "label": "لماذا تختار النساء تجميد بويضاتهن؟", "target": "why-freeze" }, { "key": "whats-involved", "label": "ماذا يتضمن تجميد البويضات؟", "target": "whats-involved" } ],
+        "sections": [ { "id": "what-is-egg-freezing", "type": "rich_text", "enabled": true, "title": "ما هو تجميد البويضات؟", "paragraphs": [ "تجميد البويضات عملية تشمل جمع بويضات المرأة وتجميدها وتخزينها لاستخدامها المحتمل مستقبلاً. يساعد ذلك بعض النساء على حفظ خيارات الخصوبة لديهن." ] }, { "id": "why-freeze", "type": "rich_text", "enabled": true, "title": "لماذا تختار النساء تجميد بويضاتهن؟", "paragraphs": [ "قد تختار النساء حفظ خصوبتهن لأسباب شخصية أو مهنية، أو قبل علاجات طبية قد تؤثر في الخصوبة. يشرح لك الأخصائي الخيارات والنتائج المتوقعة وفق ظروفك." ] }, { "id": "whats-involved", "type": "rich_text", "enabled": true, "title": "ماذا يتضمن تجميد البويضات؟", "paragraphs": [ "يشمل المسار استشارة أولية، وفحوصات ومتابعة للمبايض، وتحفيزاً هرمونياً، ثم جمع البويضات وتجميدها بتقنية التزجيج في مختبر الأجنة." ] } ]
+      }
+    },
+    {
+      "slug": "fertility-preservation", "status": "publish", "title": "حفظ الخصوبة",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "حفظ الخصوبة", "titleHighlight": "خيارات لحفظ خصوبتك وفق خطتك", "description": "تقدم بورن هول خدمات متقدمة لحفظ البويضات والحيوانات المنوية والأجنة لأسباب طبية أو شخصية.", "media": { "alt": "حفظ الخصوبة" } },
+        "navigation": [ { "key": "preservation-options", "label": "خيارات حفظ الخصوبة", "target": "preservation-options" }, { "key": "who-is-it-for", "label": "لمن يناسب حفظ الخصوبة؟", "target": "who-is-it-for" } ],
+        "sections": [ { "id": "preservation-options", "type": "rich_text", "enabled": true, "title": "خيارات حفظ الخصوبة", "paragraphs": [ "تشمل الخيارات تجميد البويضات والحيوانات المنوية والأجنة، مع إرشاد حول التخزين والمتابعة والخطوات التالية." ] }, { "id": "who-is-it-for", "type": "rich_text", "enabled": true, "title": "لمن يناسب حفظ الخصوبة؟", "paragraphs": [ "قد يناسب من يخططون للمستقبل أو من سيخضعون لعلاج طبي قد يؤثر في الخصوبة، بما في ذلك بعض حالات علاج السرطان." ] } ]
+      }
+    },
+    {
+      "slug": "male-fertility", "status": "publish", "title": "خصوبة الرجل",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "خصوبة الرجل", "titleHighlight": "تقييم وعلاج متخصص لعوامل الخصوبة عند الرجل", "description": "نقيّم خصوبة الرجل ونعالجها بالعناية نفسها التي نقدمها لخصوبة المرأة، من خلال أطباء المسالك وأخصائيي الأندرولوجيا.", "media": { "alt": "خصوبة الرجل" } },
+        "navigation": [ { "key": "male-fertility-assessment", "label": "تقييم خصوبة الرجل", "target": "male-fertility-assessment" }, { "key": "male-fertility-treatment", "label": "علاجات خصوبة الرجل", "target": "male-fertility-treatment" } ],
+        "sections": [ { "id": "male-fertility-assessment", "type": "rich_text", "enabled": true, "title": "تقييم خصوبة الرجل", "paragraphs": [ "يشمل التقييم تحليل السائل المنوي والفحوصات المناسبة ومراجعة التاريخ الطبي لتحديد عوامل مثل انخفاض العدد أو ضعف الحركة أو تغير الشكل." ] }, { "id": "male-fertility-treatment", "type": "rich_text", "enabled": true, "title": "علاجات خصوبة الرجل", "paragraphs": [ "قد تشمل الرعاية دعم المسالك والأندرولوجيا، والحقن المجهري، ومسارات استخراج الحيوانات المنوية جراحياً مثل TESA وmicro-TESE عند الحاجة." ] } ]
+      }
+    },
+    {
+      "slug": "embryo-freezing", "status": "publish", "title": "تجميد الأجنة",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "تجميد الأجنة", "titleHighlight": "احفظ أجنتك لاستخدامها في المستقبل", "description": "نجمّد الأجنة في مرحلة مبكرة من نموها لاستخدامها في نقل لاحق عندما يحين الوقت المناسب لعائلتك.", "media": { "imageId": 1201, "alt": "تجميد الأجنة" } },
+        "navigation": [ { "key": "what-is-embryo-freezing", "label": "ما هو تجميد الأجنة؟", "target": "what-is-embryo-freezing" }, { "key": "when-is-embryo-freezing-used", "label": "متى يُستخدم تجميد الأجنة؟", "target": "when-is-embryo-freezing-used" } ],
+        "sections": [ { "id": "what-is-embryo-freezing", "type": "rich_text", "enabled": true, "title": "ما هو تجميد الأجنة؟", "paragraphs": [ "يحفظ تجميد الأجنة الأجنة في مرحلة مبكرة من نموها لاستخدامها في نقل لاحق عندما يحين الوقت المناسب لعائلتك." ] }, { "id": "when-is-embryo-freezing-used", "type": "rich_text", "enabled": true, "title": "متى يُستخدم تجميد الأجنة؟", "paragraphs": [ "يمكن استخدام الأجنة المجمدة في وقت لاحق ضمن خطة علاج الخصوبة، وفق تقييم الأخصائي واحتياجات الأسرة." ] } ]
+      }
+    },
+    {
+      "slug": "sperm-freezing", "status": "publish", "title": "تجميد الحيوانات المنوية",
+      "data": {
+        "template": "treatment-detail", "hero": { "title": "تجميد الحيوانات المنوية", "titleHighlight": "احفظ الحيوانات المنوية لاستخدامها في المستقبل", "description": "احفظ الحيوانات المنوية لاستخدامها مستقبلاً، بما في ذلك قبل استئصال الأسهر أو علاج السرطان أو عند انخفاض العدد.", "media": { "alt": "تجميد الحيوانات المنوية" } },
+        "navigation": [ { "key": "what-is-sperm-freezing", "label": "ما هو تجميد الحيوانات المنوية؟", "target": "what-is-sperm-freezing" }, { "key": "who-is-sperm-freezing-for", "label": "لمن يناسب تجميد الحيوانات المنوية؟", "target": "who-is-sperm-freezing-for" } ],
+        "sections": [ { "id": "what-is-sperm-freezing", "type": "rich_text", "enabled": true, "title": "ما هو تجميد الحيوانات المنوية؟", "paragraphs": [ "يحفظ تجميد الحيوانات المنوية الحيوانات المنوية لاستخدامها المحتمل في علاج الخصوبة مستقبلاً." ] }, { "id": "who-is-sperm-freezing-for", "type": "rich_text", "enabled": true, "title": "لمن يناسب تجميد الحيوانات المنوية؟", "paragraphs": [ "يمكن التفكير فيه قبل علاج طبي أو استئصال الأسهر أو عند مناقشة خيارات حفظ الخصوبة." ] } ]
+      }
+    }
+  ],
+  "doctors": []
+}
