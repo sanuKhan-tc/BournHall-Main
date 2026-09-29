@@ -5,6 +5,11 @@ Exporter stack with Loki and Grafana Alloy. The existing Platform Health
 dashboard and probes are retained. Loki is local-only and is not published on
 a host port.
 
+Copy `.env.example` to `.env` for local configuration. The `WPE_*` entries are
+reserved placeholders for the future remote log collector; they are not read
+by the current Compose services. Keep tokens and private-key paths only in the
+ignored `.env` or deployment secret manager.
+
 ## Start and stop
 
 ```powershell
