@@ -1,0 +1,57 @@
+logging {
+  level  = "info"
+  format = "logfmt"
+}
+
+local.file_match "brounhall" {
+  path_targets = [
+    {
+      "__path__" = "/var/log/brounhall/frontend/*.jsonl",
+      "application" = "brounhall",
+      "environment" = "development",
+      "service" = "frontend",
+    },
+    {
+      "__path__" = "/var/log/brounhall/wordpress/*.jsonl",
+      "application" = "brounhall",
+      "environment" = "development",
+      "service" = "wordpress",
+    },
+  ]
+}
+
+loki.process "brounhall" {
+  forward_to = [loki.write.local.receiver]
+
+  stage.json {
+    expressions = {
+      level = "level",
+    }
+    drop_malformed = true
+  }
+
+  stage.drop {
+    expression = "(?i)\\\"(password|passwd|authorization|cookie|set-cookie|api[_-]?key|access[_-]?token|refresh[_-]?token|email|phone|first_name|last_name|address|dob|date_of_birth|medical|notes)\\\"\\s*:"
+  }
+
+  stage.drop {
+    expression = "(?i)(observability-test@example\\.invalid|\\+971500000000|TEST_PASSWORD_DO_NOT_LOG|TEST_TOKEN_DO_NOT_LOG|TEST_AUTH_DO_NOT_LOG|TEST_COOKIE_DO_NOT_LOG)"
+  }
+
+  stage.labels {
+    values = {
+      level = "level",
+    }
+  }
+}
+
+loki.source.file "brounhall" {
+  targets    = local.file_match.brounhall.targets
+  forward_to = [loki.process.brounhall.receiver]
+}
+
+loki.write "local" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}

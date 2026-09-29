@@ -1,0 +1,92 @@
+{
+  "id": null,
+  "uid": "brounhall-application-logs",
+  "title": "BrounHall — Application Logs & Errors",
+  "tags": ["brounhall", "loki", "logs"],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "30s",
+  "time": { "from": "now-1h", "to": "now" },
+  "templating": {
+    "list": [
+      {
+        "name": "environment",
+        "label": "Environment",
+        "type": "query",
+        "datasource": { "type": "loki", "uid": "loki" },
+        "definition": "label_values({application=\"brounhall\"}, environment)",
+        "query": "label_values({application=\"brounhall\"}, environment)",
+        "refresh": 1,
+        "includeAll": true,
+        "multi": true,
+        "current": { "text": ["All"], "value": ["$__all"] },
+        "options": [],
+        "allValue": ".*"
+      },
+      {
+        "name": "service",
+        "label": "Service",
+        "type": "query",
+        "datasource": { "type": "loki", "uid": "loki" },
+        "definition": "label_values({application=\"brounhall\", environment=~\"$environment\"}, service)",
+        "query": "label_values({application=\"brounhall\", environment=~\"$environment\"}, service)",
+        "refresh": 1,
+        "includeAll": true,
+        "multi": true,
+        "current": { "text": ["All"], "value": ["$__all"] },
+        "options": [],
+        "allValue": ".*"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Errors over time",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "sum by (service) (count_over_time({application=\"brounhall\", environment=~\"$environment\", service=~\"$service\"} | json | level=\"error\" [$__interval]))", "queryType": "range" }],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "list" }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Warnings over time",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "sum by (service) (count_over_time({application=\"brounhall\", environment=~\"$environment\", service=~\"$service\"} | json | level=\"warn\" [$__interval]))", "queryType": "range" }],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "list" }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 3,
+      "type": "logs",
+      "title": "Live application logs",
+      "gridPos": { "h": 12, "w": 24, "x": 0, "y": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "{application=\"brounhall\", environment=~\"$environment\", service=~\"$service\"} | json", "queryType": "range" }],
+      "options": { "showTime": true, "showLabels": false, "showCommonLabels": false, "wrapLines": false, "prettifyLogMessage": true, "enableLogDetails": true, "sortOrder": "Descending" }
+    },
+    {
+      "id": 4,
+      "type": "logs",
+      "title": "Error logs",
+      "gridPos": { "h": 12, "w": 12, "x": 0, "y": 20 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "{application=\"brounhall\", environment=~\"$environment\", service=~\"$service\"} | json | level=\"error\"", "queryType": "range" }],
+      "options": { "showTime": true, "showLabels": false, "wrapLines": true, "prettifyLogMessage": true, "enableLogDetails": true, "sortOrder": "Descending" }
+    },
+    {
+      "id": 5,
+      "type": "logs",
+      "title": "Slow operations (> 2000 ms)",
+      "gridPos": { "h": 12, "w": 12, "x": 12, "y": 20 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "{application=\"brounhall\", environment=~\"$environment\", service=~\"$service\"} | json | duration_ms > 2000", "queryType": "range" }],
+      "options": { "showTime": true, "showLabels": false, "wrapLines": true, "prettifyLogMessage": true, "enableLogDetails": true, "sortOrder": "Descending" }
+    }
+  ]
+}

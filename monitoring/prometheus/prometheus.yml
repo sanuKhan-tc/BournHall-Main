@@ -1,0 +1,93 @@
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  scrape_timeout: 10s
+
+scrape_configs:
+
+  # ============================================================
+  # Prometheus self-monitoring
+  # ============================================================
+  - job_name: prometheus
+
+    static_configs:
+      - targets:
+          - prometheus:9090
+        labels:
+          service: prometheus
+          environment: development
+
+
+  # ============================================================
+  # BrounHall HTTP / HTTPS monitoring
+  # Uses Prometheus Blackbox Exporter
+  # ============================================================
+  - job_name: blackbox
+
+    metrics_path: /probe
+
+    params:
+      module:
+        - http_2xx
+
+    static_configs:
+
+      # --------------------------------------------------------
+      # Next.js Frontend
+      # --------------------------------------------------------
+      - targets:
+          - https://hz51k4wkvxkp5bw4zvldo4qij.js.wpenginepowered.com
+        labels:
+          service: frontend
+          environment: development
+          application: brounhall
+
+      # --------------------------------------------------------
+      # WordPress Backend
+      # --------------------------------------------------------
+      - targets:
+          - https://brounhallwpdev.wpenginepowered.com/
+        labels:
+          service: wordpress
+          environment: development
+          application: brounhall
+
+      # --------------------------------------------------------
+      # WordPress Health Endpoint
+      # --------------------------------------------------------
+      - targets:
+          - https://brounhallwpdev.wpenginepowered.com/wp-json/brounhall/v1/health
+        labels:
+          service: wordpress-health
+          environment: development
+          application: brounhall
+
+      # --------------------------------------------------------
+      # Treatment REST API
+      # --------------------------------------------------------
+      - targets:
+          - https://brounhallwpdev.wpenginepowered.com/wp-json/brounhall/v1/treatments/ivf
+        labels:
+          service: treatment-api
+          environment: development
+          application: brounhall
+
+    # ----------------------------------------------------------
+    # Blackbox relabeling
+    #
+    # 1. Take target URL and send it as ?target=...
+    # 2. Preserve original target as "instance"
+    # 3. Send actual Prometheus scrape to Blackbox Exporter
+    # ----------------------------------------------------------
+    relabel_configs:
+
+      - source_labels:
+          - __address__
+        target_label: __param_target
+
+      - source_labels:
+          - __param_target
+        target_label: instance
+
+      - target_label: __address__
+        replacement: blackbox:9115
