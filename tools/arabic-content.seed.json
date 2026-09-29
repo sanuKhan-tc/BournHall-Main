@@ -383,8 +383,8 @@
                                     "تحضير الحيوانات المنوية والحقن المجهري",
                                     "الإخصاب",
                                     "فحص 24 كروموسوماً مع الخزعة والتجميد والتخزين لمدة عام",
-                                    "Ultrasound + Treatment profile",
-                                    "Embryo transfer",
+                                    "الموجات فوق الصوتية وملف العلاج",
+                                    "نقل الأجنة",
                                     "اختبارا حمل",
                                     "*الأدوية غير مشمولة"
                                 ],
@@ -688,7 +688,7 @@
                         },
                         "media": {
                             "image_id": 1701,
-                            "alt": "Bourn Hall fertility clinic"
+                            "alt": "عيادة بورن هول للخصوبة"
                         }
                     },
                     {
@@ -1762,7 +1762,7 @@
                         "enabled": true,
                         "content": {
                             "title": "رعاية خصوبة رائدة، حيث يزهر الأمل.",
-                            "description": "At Bourn Hall, you're in expert hands. Through our network of technologies, our experts will nurture and guide you on your journey to parenthood.\n\nAt Bourn Hall, you're in expert hands. Through our network of technologies, our experts will nurture and guide you on your journey to parenthood."
+                            "description": "في بورن هول، أنت بين أيدٍ خبيرة. ومن خلال تقنياتنا المتقدمة، سيرعاك خبراؤنا ويرشدونك في رحلتك نحو الأبوة والأمومة.\n\nفي بورن هول، أنت بين أيدٍ خبيرة. ومن خلال تقنياتنا المتقدمة، سيرعاك خبراؤنا ويرشدونك في رحلتك نحو الأبوة والأمومة."
                         },
                         "media": {
                             "image_id": 191,
@@ -1797,7 +1797,7 @@
                         "1": ">",
                         "media": {
                             "image_id": 0,
-                            "alt": "Bourn Hall fertility clinic",
+                            "alt": "عيادة بورن هول للخصوبة",
                             "badge": {
                                 "enabled": true,
                                 "title": "جزء من ميدكلينيك الشرق الأوسط",
@@ -1876,7 +1876,7 @@
                         },
                         "media": {
                             "image_id": 0,
-                            "alt": "Bourn Hall fertility clinic",
+                            "alt": "عيادة بورن هول للخصوبة",
                             "overlay": {
                                 "enabled": true,
                                 "title": "إرث غيّر رعاية الخصوبة",
