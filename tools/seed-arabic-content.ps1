@@ -30,18 +30,17 @@ if ($Target -eq "local") {
 }
 
 $remoteFile = "/tmp/brounhall-arabic-content-$([guid]::NewGuid().ToString('N')).json"
-$sshOptions = @()
-if ($SshKey) { $sshOptions += @("-i", $SshKey, "-o", "IdentitiesOnly=yes") }
 $encoded = [Convert]::ToBase64String([IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $SeedFile)))
+$sshArgs = @()
+if ($SshKey) { $sshArgs += @("-i", $SshKey, "-o", "IdentitiesOnly=yes") }
+$sshArgs += @($RemoteHost, "base64 -d > $remoteFile && cd $RemoteWpPath && wp brounhall locale migrate --file=$remoteFile$executeArg; exitCode=`$?; rm -f $remoteFile; exit `$exitCode")
 $sshProcess = [Diagnostics.Process]::new()
 $sshProcess.StartInfo.FileName = "ssh"
 $sshProcess.StartInfo.UseShellExecute = $false
 $sshProcess.StartInfo.RedirectStandardInput = $true
 $sshProcess.StartInfo.RedirectStandardOutput = $true
 $sshProcess.StartInfo.RedirectStandardError = $true
-foreach ($option in $sshOptions) { [void]$sshProcess.StartInfo.ArgumentList.Add($option) }
-[void]$sshProcess.StartInfo.ArgumentList.Add($RemoteHost)
-[void]$sshProcess.StartInfo.ArgumentList.Add("base64 -d > $remoteFile && cd $RemoteWpPath && wp brounhall locale migrate --file=$remoteFile$executeArg; exitCode=`$?; rm -f $remoteFile; exit `$exitCode")
+$sshProcess.StartInfo.Arguments = (($sshArgs | ForEach-Object { '"' + $_.Replace('"', '\"') + '"' }) -join " ")
 [void]$sshProcess.Start()
 $payload = [Text.Encoding]::ASCII.GetBytes($encoded)
 $sshProcess.StandardInput.BaseStream.Write($payload, 0, $payload.Length)
