@@ -17,17 +17,22 @@ safe-by-default and does not replace a WordPress database.
 ## Commands
 
 ```text
-wp brounhall content validate --locale=all
-wp brounhall content status --migration=2026-10-bourn-hall-content-v1
-wp brounhall content migrate --migration=2026-10-bourn-hall-content-v1 --locale=all --dry-run
-wp brounhall content migrate --migration=2026-10-bourn-hall-content-v1 --locale=all
-wp brounhall content verify --migration=2026-10-bourn-hall-content-v1
+wp brounhall content migrate --locale=all --file=/srv/www/bournhall/tools/arabic-content.seed.json
+wp brounhall content migrate --locale=all --file=/srv/www/bournhall/tools/arabic-content.seed.json --execute
+wp brounhall content migrate --locale=all --file=/srv/www/bournhall/tools/arabic-content.seed.json --temporary-placeholders --execute
 ```
 
-Use `--only=pages`, `--only=treatments`, `--only=doctors`, `--only=globals`,
-`--only=navigation` or `--only=locations` to narrow a run. `--force-managed`
-is reserved for records already marked as managed by this migration; it does
-not delete unrelated production data.
+The command is dry-run by default. `--temporary-placeholders` replaces only
+exact unresolved marker values with locale-specific temporary text; it does not
+create routes or replace media.
+
+PowerShell/SSH wrapper:
+
+```powershell
+powershell -File tools/content-migrate.ps1 -SeedFile tools/arabic-content.seed.json -Target local
+powershell -File tools/content-migrate.ps1 -SeedFile tools/arabic-content.seed.json -Target remote -SshKey $env:USERPROFILE\.ssh\wpe_brounhall_deploy
+powershell -File tools/content-migrate.ps1 -SeedFile tools/arabic-content.seed.json -Target remote -Execute -TemporaryPlaceholders -SshKey $env:USERPROFILE\.ssh\wpe_brounhall_deploy
+```
 
 ## Order
 
@@ -42,4 +47,3 @@ Do not promise automatic rollback. For a code issue, roll back the plugin to
 the previously tested child SHA. For a content issue, restore the environment
 backup or apply a reviewed migration-specific corrective manifest. Never restore
 the entire database to undo one content field without an approved recovery plan.
-
