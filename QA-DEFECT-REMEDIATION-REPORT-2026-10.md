@@ -96,14 +96,14 @@ The defect table in section 3 is the result matrix. `FIXED` means deterministic 
 ## 9. Git State
 
 ```text
-Parent final SHA: efb7c0626e86a76fefd95508b223ad3ac1951128 (unchanged)
-Frontend final SHA: 9a044da
+Parent final SHA: de4496ca5cdda6e5007a4f168eabfbe79cc11320
+Frontend final SHA: 2d131dfc6582f3b2858f9248cd54a436fe53e4dd
 Backend final SHA: a6550a1fcb838d96a8475c61bd4559765680f361 (unchanged)
-Frontend pointer: parent remains at recorded ed87d44; aa460a9 was pre-existing working-tree drift
+Frontend pointer: parent pins 2d131df
 Backend pointer: unchanged
-Commits created: frontend 9a044da (fix-qa-defects)
+Commits created: frontend 9a044da plus merge 2d131df; parent de4496c
 Branches created: frontend fix/qa-defects-sept
-Push: blocked by environment Git signal-pipe/remote access failure
+Push: parent and frontend dev successfully pushed
 ```
 
 ## 10. Remaining Risks
