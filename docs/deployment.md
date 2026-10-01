@@ -30,6 +30,23 @@ branch, or manually from the Actions tab.
 
 Do not use the same key as a personal key. Do not commit the private key.
 
+## Form submission storage
+
+Appointment and patient complaint submissions are not stored in WordPress by
+default. To explicitly enable encrypted record storage, add this to the target
+environment's `wp-config.php`:
+
+```php
+define( 'BOURNHALL_STORE_FORM_SUBMISSIONS', true );
+```
+
+When the constant is absent or false, validated submissions are sent to the
+configured notification recipients using the Bourn Hall HTML email templates
+and are not encrypted or inserted as WordPress records. When storage is
+enabled, the Appointment and Patient Complaint admin record views display a
+warning. Obtain privacy approval for retention, access, backups, and deletion
+before enabling it.
+
 ## Frontend setup
 
 Connect the `frontend` GitHub repository directly to a WP Engine Headless
