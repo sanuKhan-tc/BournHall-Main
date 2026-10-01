@@ -43,10 +43,11 @@ define( 'BOURNHALL_STORE_FORM_SUBMISSIONS', true );
 When the constant is absent or false, validated submissions are sent to the
 configured notification recipients using the Bourn Hall HTML email templates
 and are not encrypted or inserted as WordPress records. When storage is
-enabled, the Appointment and Patient Complaint admin record views display a
-storage warning. When disabled, those views state that new submissions are
-email-only and direct users to the system administrator. Obtain privacy
-approval for retention, access, backups, and deletion before enabling it.
+enabled, the Appointment and Patient Complaint admin listing and record views
+display a storage warning. When disabled, those views state that new
+submissions are email-only and direct users to the system administrator.
+Obtain privacy approval for retention, access, backups, and deletion before
+enabling it.
 
 ## Frontend setup
 
