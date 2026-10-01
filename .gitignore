@@ -1,2 +1,3 @@
 login
 */*.env
+docs/content/**
