@@ -1,3 +1,3 @@
 login
 */*.env
-docs/content/**
+docs/content/*.docx
