@@ -16,7 +16,7 @@ if (-not (Test-Path -LiteralPath $SeedFile -PathType Leaf)) {
 }
 
 $seed = Get-Content -LiteralPath $SeedFile -Raw | ConvertFrom-Json
-foreach ($key in @("pages", "treatments", "doctors")) {
+foreach ($key in @("pages", "treatments", "doctors", "faqs")) {
     if ($null -eq $seed.$key) {
         throw "Seed file must contain '$key'."
     }
