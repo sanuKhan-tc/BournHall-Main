@@ -5,6 +5,12 @@
 This runbook currently covers the first WP Engine development environment.
 QA, staging, and production workflows are intentionally not configured yet.
 
+The backend repository's normal branch history was rewritten to remove tracked
+WordPress core after the plugin-only split. Existing backend clones must
+reclone or realign their branches before pushing. GitHub may retain objects
+through immutable closed pull-request refs; removing those refs requires
+GitHub Support or repository recreation and is separate from branch history.
+
 The local XAMPP database is empty and must not be copied to WP Engine. Use a
 populated WP Engine source environment for a controlled environment copy, or
 use the reviewed content manifests after the backend plugin is deployed. Do
