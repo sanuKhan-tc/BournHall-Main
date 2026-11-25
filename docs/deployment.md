@@ -106,18 +106,20 @@ site; replace the placeholders with the values from the Dev environment.
 Add `-Execute` only after the dry-run output and unresolved-content list have
 been reviewed. These manifests are not a full database/media replacement.
 
-## Why the backend uses GitHub Actions instead of WP Engine GitPush
+## Why the backend currently uses GitHub Actions instead of WP Engine GitPush
 
-The current backend repository contains WordPress core and `wp-config.php`,
-while the supported workflow intentionally deploys only
-`wp-content/plugins/brounhall-headless/`. Do not connect the current backend
-repository directly to WP Engine GitPush, because a whole-repository GitPush
-could deploy files outside that plugin boundary. GitHub Actions uses SSH
-Gateway/rsync with explicit source and destination paths, so it is the safe
-plugin-only deployment path for this repository.
+The backend repository now tracks the project plugin, project tests/tools, and
+CI guidance; the full local WordPress installation remains on disk and is
+ignored. The supported workflow still intentionally deploys only
+`wp-content/plugins/brounhall-headless/`. GitHub Actions uses SSH Gateway/rsync
+with explicit source and destination paths, so it remains the safest
+plugin-only deployment path.
 
-WP Engine GitPush is an alternative only if a separate plugin-only repository
-is created and maintained. That is not part of the current Dev setup.
+WP Engine GitPush can be used with a repository that contains only the desired
+site-relative files, but GitPush is still a push target rather than an
+automatic GitHub pull service. A GitHub CI job would need to push the commit to
+the WP Engine Git remote. It also has different branch behavior than the
+current Actions workflow, so it is not part of the current Dev setup.
 
 ## Dev frontend setup
 
