@@ -73,9 +73,12 @@ enabling it.
 
 Choose one source before writing to Dev:
 
-1. **Populated WP Engine source:** take a Dev backup, then use WP Engine's
-   environment copy flow from the populated source to Dev. Confirm the source
-   and target before starting, and verify the resulting URLs/content counts.
+1. **Populated WP Engine source:** take a Dev backup, then in the WP Engine
+   User Portal select the Dev environment as the destination and use
+   `Actions -> Pull from` to copy from the populated source. Choose Full or
+   Custom copy deliberately, confirm search/replace and source/target URLs,
+   then verify content counts and media URLs. WP Engine's Pull action copies
+   between WP Engine environments; it does not pull a GitHub repository.
 2. **Reviewed repository content:** deploy the backend plugin first, run a dry
    run of the migration manifest, review warnings, then execute only approved
    records:
@@ -102,6 +105,19 @@ Do not use the wrappers' legacy default host/path values for a new WP Engine
 site; replace the placeholders with the values from the Dev environment.
 Add `-Execute` only after the dry-run output and unresolved-content list have
 been reviewed. These manifests are not a full database/media replacement.
+
+## Why the backend uses GitHub Actions instead of WP Engine GitPush
+
+The current backend repository contains WordPress core and `wp-config.php`,
+while the supported workflow intentionally deploys only
+`wp-content/plugins/brounhall-headless/`. Do not connect the current backend
+repository directly to WP Engine GitPush, because a whole-repository GitPush
+could deploy files outside that plugin boundary. GitHub Actions uses SSH
+Gateway/rsync with explicit source and destination paths, so it is the safe
+plugin-only deployment path for this repository.
+
+WP Engine GitPush is an alternative only if a separate plugin-only repository
+is created and maintained. That is not part of the current Dev setup.
 
 ## Dev frontend setup
 
